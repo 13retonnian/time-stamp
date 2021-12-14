@@ -22,7 +22,9 @@ const stampButtonHandler = function(event) {
     stampButton.style.display = "none";
     stampButtonIndent.style.display = "block";
     stampButtonBoolean = true;
-    printTimeStamp();    
+    printTimeStamp();
+    //clear input box
+    stampTitle.value = "";
     buttonSound.play();    
   }
   else {
