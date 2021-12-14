@@ -1,0 +1,22 @@
+html {
+  background-color: black;
+}
+.stamp-button {
+  display: block;
+  margin: 0 auto;
+}
+.stamp-button-indent {
+  display: none;
+  margin: 0 auto;
+}
+.time-stamp-title-input {
+  display: block;
+  margin: 20px auto;
+  height: 40px;
+  width: 400px;
+  font-size: 20px;
+}
+.time-stamp {
+  text-align: center;
+  color: white;
+}
