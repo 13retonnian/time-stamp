@@ -20,3 +20,7 @@ html {
   text-align: center;
   color: white;
 }
+.save-button {  
+  margin: 20px auto;
+  display: none;
+}

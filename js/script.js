@@ -4,6 +4,8 @@ const stampButtonIndent = document.querySelector(".stamp-button-indent");
 const buttonSound = document.querySelector(".button-sound");
 const stampTitle = document.querySelector(".time-stamp-title-input");
 const timeStamp = document.querySelector(".time-stamp");
+const saveButton = document.querySelector(".save-button");
+let textFile = "";
 let stampButtonBoolean = false;
 
 const getTimeAndDate = function(){
@@ -14,6 +16,7 @@ const getTimeAndDate = function(){
 const printTimeStamp = function() {  
   timeStamp.innerHTML += `<h2>${stampTitle.value}</h2>
   <p>${getTimeAndDate()}</p>`;  
+  textFile += `${stampTitle.value} \n ${getTimeAndDate()} \n`;
 }
 const stampButtonHandler = function(event) {
   event.preventDefault();
@@ -25,7 +28,8 @@ const stampButtonHandler = function(event) {
     printTimeStamp();
     //clear input box
     stampTitle.value = "";
-    buttonSound.play();    
+    buttonSound.play(); 
+    saveButton.style.display = "block";
   }
   else {
     stampButton.style.display = "block";
@@ -35,5 +39,36 @@ const stampButtonHandler = function(event) {
   }
 }
 
+const saveButtonHandler = function() {
+
+  const a = document.createElement('a');
+  const file = new Blob([textFile], {type: "text/plain"});
+  
+  a.href= URL.createObjectURL(file);
+  a.download = "time-stamps.txt";
+  a.click();
+    
+  URL.revokeObjectURL(a.href);
+
+  // const downloadToFile = (content, filename, contentType) => {
+  //   const a = document.createElement('a');
+  //   const file = new Blob([content], {type: contentType});
+    
+  //   a.href= URL.createObjectURL(file);
+  //   a.download = filename;
+  //   a.click();
+    
+  //   URL.revokeObjectURL(a.href);
+  // };
+  
+  // document.querySelector('#btnSave').addEventListener('click', () => {
+  //   const textArea = document.querySelector('textarea');
+    
+  //   downloadToFile(textArea.value, 'my-new-file.txt', 'text/plain');
+  // });
+ 
+}
+
 stampButton.addEventListener("mousedown", stampButtonHandler);
 stampButtonIndent.addEventListener("mouseup", stampButtonHandler);
+saveButton.addEventListener("click", saveButtonHandler);
